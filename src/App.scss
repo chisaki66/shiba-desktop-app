@@ -1,10 +1,10 @@
 .header {
-  background-color: #BB6464;
+  background-color: #bb6464;
   height: 100px;
 }
 
 .main {
-  background-color: #FCF7F7;
+  background-color: #fcf7f7;
   height: 100vh;
   padding: 30px 0 0 30px;
 }
@@ -28,11 +28,21 @@
     margin-top: 0;
   }
 
+  &__done-list-item {
+    text-decoration: line-through;
+  }
+
+  &__input-list-item {
+    border: none;
+    background-color: transparent;
+    outline: 0;
+  }
+
   &__item-text {
     margin-left: 10px;
   }
-}
 
-.actionButton {
-  margin-left: 10px;
+  &__action-button {
+    margin-left: 10px;
+  }
 }

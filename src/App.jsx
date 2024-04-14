@@ -5,10 +5,6 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState('');
 
-  const handleNewTask = (event) => {
-    setTask(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (task === '') return;
@@ -16,10 +12,8 @@ const App = () => {
     setTask('');
   };
 
-  const handleRemoveTask = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+  const handleNewTask = (event) => {
+    setTask(event.target.value);
   };
 
   const handleUpdateTask = (index) => {
@@ -32,29 +26,52 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  const handleEditTask = (index, newName) => {
+    const updatedTasks = [...todos];
+    updatedTasks[index] = newName;
+    setTodos(updatedTasks);
+  };
+
+  const handleRemoveTask = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <div>
       <header className="header"></header>
       <main className="main">
         <form className="form" onSubmit={handleSubmit}>
-          <input className="form__input" value={task} placeholder="タスクを入力..." onChange={handleNewTask} />
+          <input
+            className="form__input"
+            value={task}
+            placeholder="タスクを入力..."
+            onChange={handleNewTask}
+          />
         </form>
         <ul className="list">
           {todos.map((todo, index) => (
-            <li
-              className="list__item"
-              key={index}
-              style={{
-                textDecoration: todo.isCompleted ? 'line-through' : 'none',
-              }}
-            >
+            <li className="list__item" key={index}>
               <input
                 type="checkbox"
                 checked={todo.isCompleted}
                 onChange={() => handleUpdateTask(index)}
               />
-              {todo.task}
-              <div className="actionButton" onClick={() => handleRemoveTask(index)} style={{ cursor: 'pointer' }}>
+              {todo.isCompleted ? (
+                <span className="list__done-list-item">{todo.task}</span>
+              ) : (
+                <input
+                  className="list__input-list-item"
+                  value={todo.task}
+                  onChange={(newName) => handleEditTask(index, newName)}
+                />
+              )}
+              <div
+                className="list__action-button"
+                onClick={() => handleRemoveTask(index)}
+                style={{ cursor: 'pointer' }}
+              >
                 X
               </div>
             </li>
