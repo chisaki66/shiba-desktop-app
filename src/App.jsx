@@ -2,18 +2,14 @@ import './App.scss';
 import { useState } from 'react';
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
   const [task, setTask] = useState('');
+  const [todos, setTodos] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (task === '') return;
     setTodos((todos) => [...todos, { task, isCompleted: false }]);
     setTask('');
-  };
-
-  const handleNewTask = (event) => {
-    setTask(event.target.value);
   };
 
   const handleUpdateTask = (index) => {
@@ -28,7 +24,7 @@ const App = () => {
 
   const handleEditTask = (index, newName) => {
     const updatedTasks = [...todos];
-    updatedTasks[index] = newName;
+    updatedTasks[index].task = newName;
     setTodos(updatedTasks);
   };
 
@@ -47,7 +43,7 @@ const App = () => {
             className="form__input"
             value={task}
             placeholder="タスクを入力..."
-            onChange={handleNewTask}
+            onChange={(event) => setTask(event.target.value)}
           />
         </form>
         <ul className="list">
@@ -64,7 +60,7 @@ const App = () => {
                 <input
                   className="list__input-list-item"
                   value={todo.task}
-                  onChange={(newName) => handleEditTask(index, newName)}
+                  onChange={(event) => handleEditTask(index, event.target.value)}
                 />
               )}
               <div
