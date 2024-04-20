@@ -1,7 +1,7 @@
-import './ListGroup.scss';
+import './SubLists.scss';
 import { useState } from 'react';
 
-const ListGroup = () => {
+const SubLists = ({ lists }) => {
   const [task, setTask] = useState('');
   const [todos, setTodos] = useState([]);
 
@@ -33,7 +33,7 @@ const ListGroup = () => {
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
-  
+
   return (
     <>
       <main className="main">
@@ -75,6 +75,6 @@ const ListGroup = () => {
       </main>
     </>
   );
-}
+};
 
-export default ListGroup;
+export default SubLists;
