@@ -53,7 +53,7 @@ const App = () => {
         item={item}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
-        subLists={lists[listNum].subLists}
+        lists={lists[listNum]}
       />
       <footer></footer>
     </div>
