@@ -14,6 +14,7 @@ const App = () => {
     if (title === '') return;
     setLists((lists) => [...lists, { title, isCompleted: false, subLists: [] }]);
     setTitle('');
+    setListNum(lists.length);
   };
 
   const handleAddList = (event) => {
