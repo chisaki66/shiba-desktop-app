@@ -1,16 +1,16 @@
 import './Lists.scss';
 
-const Lists = ({ lists, handleSubmit, title, handleAddList, handleChangeTitle }) => {
+const Lists = ({ lists, handleListSubmit, title, handleAddList, handleChangeSubList }) => {
   return (
     <div>
       <main>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleListSubmit}>
           <input placeholder="新しいリストを入力..." value={title} onChange={handleAddList} />
         </form>
         <ul>
           {lists.map((list, index) => (
             <li key={index}>
-              <button onClick={() => handleChangeTitle(index)}>{list.title}</button>
+              <button onClick={() => handleChangeSubList(index)}>{list.title}</button>
             </li>
           ))}
         </ul>

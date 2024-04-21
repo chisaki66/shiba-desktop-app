@@ -7,8 +7,9 @@ const App = () => {
   const [title, setTitle] = useState('');
   const [lists, setLists] = useState([]);
   const [listNum, setListNum] = useState(0);
+  const [item, setItem] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleListSubmit = (event) => {
     event.preventDefault();
     if (title === '') return;
     setLists((lists) => [...lists, { title, isCompleted: false, subLists: [] }]);
@@ -19,8 +20,23 @@ const App = () => {
     setTitle(event.target.value);
   };
 
-  const handleChangeTitle = (index) => {
+  const handleChangeSubList = (index) => {
     setListNum(index);
+  };
+
+  const handleSubListSubmit = (event) => {
+    event.preventDefault();
+    if (item === '') return;
+    const newSubLists = [...lists[listNum].subLists, { item, isCompleted: false }];
+    setLists((lists) => {
+      lists[listNum].subLists = newSubLists;
+      return lists;
+    });
+    setItem('');
+  };
+
+  const handleAddSubList = (event) => {
+    setItem(event.target.value);
   };
 
   return (
@@ -28,11 +44,17 @@ const App = () => {
       <header className="header"></header>
       <Lists
         lists={lists}
-        handleSubmit={handleSubmit}
+        title={title}
+        handleListSubmit={handleListSubmit}
         handleAddList={handleAddList}
-        handleChangeTitle={handleChangeTitle}
+        handleChangeSubList={handleChangeSubList}
       />
-      <SubLists lists={lists[listNum]} />
+      <SubLists
+        item={item}
+        handleSubListSubmit={handleSubListSubmit}
+        handleAddSubList={handleAddSubList}
+        subLists={lists[listNum].subLists}
+      />
       <footer></footer>
     </div>
   );
