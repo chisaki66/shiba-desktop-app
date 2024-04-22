@@ -1,6 +1,7 @@
 .list {
   &__item {
     list-style: none;
+    display: flex;
   }
 
   &__button {

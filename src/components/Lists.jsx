@@ -1,6 +1,13 @@
 import './Lists.scss';
 
-const Lists = ({ lists, handleListSubmit, title, handleAddList, handleChangeSubList }) => {
+const Lists = ({
+  lists,
+  handleListSubmit,
+  title,
+  handleAddList,
+  handleChangeSubList,
+  handleRemoveList,
+}) => {
   return (
     <div>
       <main className="list">
@@ -13,6 +20,13 @@ const Lists = ({ lists, handleListSubmit, title, handleAddList, handleChangeSubL
               <button className="list__button" onClick={() => handleChangeSubList(index)}>
                 {list.title}
               </button>
+              <div
+                className="list__action-button"
+                onClick={() => handleRemoveList(index)}
+                style={{ cursor: 'pointer' }}
+              >
+                X
+              </div>
             </li>
           ))}
         </ul>

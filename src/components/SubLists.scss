@@ -1,5 +1,10 @@
 .sub-list {
   &__item {
     list-style: none;
+    display: flex;
+  }
+
+  &__action-button {
+    margin-left: 6px;
   }
 }

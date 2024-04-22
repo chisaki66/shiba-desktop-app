@@ -25,6 +25,12 @@ const App = () => {
     setListNum(index);
   };
 
+  const handleRemoveList = (index) => {
+    const newLists = [...lists];
+    newLists.splice(index, 1);
+    setLists(newLists);
+  };
+
   const handleSubListSubmit = (event) => {
     event.preventDefault();
     if (item === '') return;
@@ -49,12 +55,13 @@ const App = () => {
         handleListSubmit={handleListSubmit}
         handleAddList={handleAddList}
         handleChangeSubList={handleChangeSubList}
+        handleRemoveList={handleRemoveList}
       />
       <SubLists
         item={item}
+        lists={lists[listNum]}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
-        lists={lists[listNum]}
       />
       <footer></footer>
     </div>
