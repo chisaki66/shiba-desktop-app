@@ -5,7 +5,9 @@ const Lists = ({
   handleListSubmit,
   title,
   handleAddList,
-  handleChangeSubList,
+  handleChangeList,
+  handleUpdateList,
+  handleEditList,
   handleRemoveList,
 }) => {
   return (
@@ -17,7 +19,15 @@ const Lists = ({
         <ul>
           {lists.map((list, index) => (
             <li className="list__item" key={index}>
-              <button className="list__button" onClick={() => handleChangeSubList(index)}>
+              <input
+                type="checkbox"
+                checked={list.isCompleted}
+                onChange={() => handleUpdateList(index)}
+              />
+              <button
+                className={list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}
+                onClick={() => handleChangeList(index)}
+              >
                 {list.title}
               </button>
               <div

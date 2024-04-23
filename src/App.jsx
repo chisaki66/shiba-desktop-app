@@ -21,14 +21,30 @@ const App = () => {
     setTitle(event.target.value);
   };
 
-  const handleChangeSubList = (index) => {
+  const handleChangeList = (index) => {
     setListNum(index);
+  };
+
+  const handleUpdateList = (index) => {
+    const newLists = lists.map((list, listIndex) => {
+      if (listIndex === index) {
+        list.isCompleted = !list.isCompleted;
+      }
+      return list;
+    });
+    setLists(newLists);
   };
 
   const handleRemoveList = (index) => {
     const newLists = [...lists];
     newLists.splice(index, 1);
     setLists(newLists);
+  };
+
+  const handleEditList = (index, newTitle) => {
+    const updatedLists = [...lists];
+    updatedLists[index].title = newTitle;
+    setLists(updatedLists);
   };
 
   const handleSubListSubmit = (event) => {
@@ -54,7 +70,9 @@ const App = () => {
         title={title}
         handleListSubmit={handleListSubmit}
         handleAddList={handleAddList}
-        handleChangeSubList={handleChangeSubList}
+        handleChangeList={handleChangeList}
+        handleUpdateList={handleUpdateList}
+        handleEditList={handleEditList}
         handleRemoveList={handleRemoveList}
       />
       <SubLists
