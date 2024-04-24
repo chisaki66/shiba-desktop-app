@@ -7,7 +7,6 @@ const Lists = ({
   handleAddList,
   handleChangeList,
   handleUpdateList,
-  handleEditList,
   handleRemoveList,
 }) => {
   return (

@@ -41,12 +41,6 @@ const App = () => {
     setLists(newLists);
   };
 
-  const handleEditList = (index, newTitle) => {
-    const updatedLists = [...lists];
-    updatedLists[index].title = newTitle;
-    setLists(updatedLists);
-  };
-
   const handleSubListSubmit = (event) => {
     event.preventDefault();
     if (item === '') return;
@@ -62,6 +56,18 @@ const App = () => {
     setItem(event.target.value);
   };
 
+  const handleRemoveSubList = (index) => {
+    const newSubLists = [...lists[listNum].subLists];
+    newSubLists.splice(index, 1);
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? { title: lists[listNum].title, isCompleted: false, subLists: newSubLists }
+          : list,
+      ),
+    );
+  };
+
   return (
     <div>
       <header className="header"></header>
@@ -72,7 +78,6 @@ const App = () => {
         handleAddList={handleAddList}
         handleChangeList={handleChangeList}
         handleUpdateList={handleUpdateList}
-        handleEditList={handleEditList}
         handleRemoveList={handleRemoveList}
       />
       <SubLists
@@ -80,6 +85,7 @@ const App = () => {
         lists={lists[listNum]}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
+        handleRemoveSubList={handleRemoveSubList}
       />
       <footer></footer>
     </div>
