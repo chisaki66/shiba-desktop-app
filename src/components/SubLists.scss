@@ -4,6 +4,17 @@
     display: flex;
   }
 
+  &__done-item {
+    border: none;
+    background: transparent;
+    text-decoration: line-through;
+  }
+
+  &__unfinished-item {
+    border: none;
+    background: transparent;
+  }
+
   &__action-button {
     margin-left: 6px;
   }

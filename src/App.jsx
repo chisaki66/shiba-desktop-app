@@ -56,6 +56,26 @@ const App = () => {
     setItem(event.target.value);
   };
 
+  const handleUpdateSubList = (index) => {
+    const newSubLists = lists[listNum].subLists.map((list, listIndex) => {
+      if (listIndex === index) {
+        list.isCompleted = !list.isCompleted;
+      }
+      return list;
+    });
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
+          : list,
+      ),
+    );
+  };
+
   const handleRemoveSubList = (index) => {
     const newSubLists = [...lists[listNum].subLists];
     newSubLists.splice(index, 1);
@@ -85,6 +105,7 @@ const App = () => {
         lists={lists[listNum]}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
+        handleUpdateSubList={handleUpdateSubList}
         handleRemoveSubList={handleRemoveSubList}
       />
       <footer></footer>
