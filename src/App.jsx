@@ -82,7 +82,11 @@ const App = () => {
     setLists(
       lists.map((list, index) =>
         index === listNum
-          ? { title: lists[listNum].title, isCompleted: false, subLists: newSubLists }
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
           : list,
       ),
     );
