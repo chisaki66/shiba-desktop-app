@@ -76,6 +76,26 @@ const App = () => {
     );
   };
 
+  const handleEditSubList = (index, newItem) => {
+    const newSubLists = lists[listNum].subLists.map((list, listIndex) => {
+      if (listIndex === index) {
+        list.item = newItem;
+      }
+      return list;
+    });
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
+          : list,
+      ),
+    );
+  };
+
   const handleRemoveSubList = (index) => {
     const newSubLists = [...lists[listNum].subLists];
     newSubLists.splice(index, 1);
@@ -91,6 +111,8 @@ const App = () => {
       ),
     );
   };
+
+  console.log(lists);
 
   return (
     <div>
@@ -110,6 +132,7 @@ const App = () => {
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
         handleUpdateSubList={handleUpdateSubList}
+        handleEditSubList={handleEditSubList}
         handleRemoveSubList={handleRemoveSubList}
       />
       <footer></footer>

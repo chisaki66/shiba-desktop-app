@@ -6,6 +6,7 @@ const SubLists = ({
   handleSubListSubmit,
   handleAddSubList,
   handleUpdateSubList,
+  handleEditSubList,
   handleRemoveSubList,
 }) => {
   return (
@@ -23,13 +24,15 @@ const SubLists = ({
                     checked={list.isCompleted}
                     onChange={() => handleUpdateSubList(index)}
                   />
-                  <span
-                    className={
-                      list.isCompleted ? 'sub-list__done-item' : 'sub-list__unfinished-item'
-                    }
-                  >
-                    {list.item}
-                  </span>
+                  {list.isCompleted ? (
+                    <span className="sub-list__done-item">{list.item}</span>
+                  ) : (
+                    <input
+                      className="sub-list__unfinished-item"
+                      value={list.item}
+                      onChange={(event) => handleEditSubList(index, event.target.value)}
+                    />
+                  )}
                   <div
                     className="sub-list__action-button"
                     onClick={() => handleRemoveSubList(index)}
