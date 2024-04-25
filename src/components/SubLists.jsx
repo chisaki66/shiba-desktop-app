@@ -2,7 +2,7 @@ import './SubLists.scss';
 
 const SubLists = ({
   item,
-  lists,
+  list,
   title,
   handleSubListSubmit,
   handleAddSubList,
@@ -18,20 +18,20 @@ const SubLists = ({
         </form>
         <div>{title}</div>
         <ul>
-          {lists
-            ? lists.subLists.map((list, index) => (
+          {list
+            ? list.subLists.map((sublist, index) => (
                 <li className="sub-list__item" key={index}>
                   <input
                     type="checkbox"
-                    checked={list.isCompleted}
+                    checked={sublist.isCompleted}
                     onChange={() => handleUpdateSubList(index)}
                   />
-                  {list.isCompleted ? (
-                    <span className="sub-list__done-item">{list.item}</span>
+                  {sublist.isCompleted ? (
+                    <span className="sub-list__done-item">{sublist.item}</span>
                   ) : (
                     <input
                       className="sub-list__unfinished-item"
-                      value={list.item}
+                      value={sublist.item}
                       onChange={(event) => handleEditSubList(index, event.target.value)}
                     />
                   )}

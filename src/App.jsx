@@ -57,11 +57,11 @@ const App = () => {
   };
 
   const handleUpdateSubList = (index) => {
-    const newSubLists = lists[listNum].subLists.map((list, listIndex) => {
+    const newSubLists = lists[listNum].subLists.map((subList, listIndex) => {
       if (listIndex === index) {
-        list.isCompleted = !list.isCompleted;
+        subList.isCompleted = !subList.isCompleted;
       }
-      return list;
+      return subList;
     });
     setLists(
       lists.map((list, index) =>
@@ -77,11 +77,11 @@ const App = () => {
   };
 
   const handleEditSubList = (index, newItem) => {
-    const newSubLists = lists[listNum].subLists.map((list, listIndex) => {
+    const newSubLists = lists[listNum].subLists.map((subList, listIndex) => {
       if (listIndex === index) {
-        list.item = newItem;
+        subList.item = newItem;
       }
-      return list;
+      return subList;
     });
     setLists(
       lists.map((list, index) =>
@@ -126,7 +126,7 @@ const App = () => {
       />
       <SubLists
         item={item}
-        lists={lists[listNum]}
+        list={lists[listNum]}
         title={lists[listNum]?.title}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
