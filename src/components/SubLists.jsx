@@ -1,8 +1,9 @@
 import './SubLists.scss';
 
 const SubLists = ({
-  lists,
   item,
+  lists,
+  title,
   handleSubListSubmit,
   handleAddSubList,
   handleUpdateSubList,
@@ -15,6 +16,7 @@ const SubLists = ({
         <form onSubmit={handleSubListSubmit}>
           <input placeholder="タスクを入力..." value={item} onChange={handleAddSubList} />
         </form>
+        <div>{title}</div>
         <ul>
           {lists
             ? lists.subLists.map((list, index) => (

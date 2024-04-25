@@ -112,8 +112,6 @@ const App = () => {
     );
   };
 
-  console.log(lists);
-
   return (
     <div>
       <header className="header"></header>
@@ -129,6 +127,7 @@ const App = () => {
       <SubLists
         item={item}
         lists={lists[listNum]}
+        title={lists[listNum]?.title}
         handleSubListSubmit={handleSubListSubmit}
         handleAddSubList={handleAddSubList}
         handleUpdateSubList={handleUpdateSubList}
