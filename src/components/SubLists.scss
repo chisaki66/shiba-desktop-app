@@ -1,8 +1,38 @@
 .sub-list {
-  width: 550px;
+  width: 650px;
   background-color: #faf0f0;
-  box-shadow: 0 0 2px rgb(167, 167, 167);
-  transition: 2s;
+  box-shadow: 0 0 4px rgb(167, 167, 167);
+
+  &__header {
+    display: flex;
+    height: 100px;
+    padding: 10px 20px;
+  }
+
+  &__header-img {
+    height: 80px;
+  }
+
+  &__header-form {
+    width: 100%;
+    margin: auto;
+    padding-left: 10px;
+  }
+
+  &__header-input {
+    width: 200px;
+    height: 20px;
+  }
+
+  &__title {
+    padding-left: 30px;
+    color: #8d524d;
+  }
+
+  &__title::before {
+    content: url(../images/paws_icon.svg);
+    vertical-align: -4px;
+  }
 
   &__item {
     list-style: none;

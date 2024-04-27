@@ -1,4 +1,5 @@
 import './SubLists.scss';
+import shiba_1 from '../images/shiba_1.png';
 
 const SubLists = ({
   item,
@@ -12,10 +13,18 @@ const SubLists = ({
 }) => {
   return (
     <div className="sub-list">
-      <form onSubmit={handleSubListSubmit}>
-        <input placeholder="タスクを入力..." value={item} onChange={handleAddSubList} />
-      </form>
-      <div>{title}</div>
+      <div className="sub-list__header">
+        <img className="sub-list__header-img" src={shiba_1} alt="shiba_1" />
+        <form className="sub-list__header-form" onSubmit={handleSubListSubmit}>
+          <input
+            className="sub-list__header-input"
+            placeholder="タスクを入力..."
+            value={item}
+            onChange={handleAddSubList}
+          />
+        </form>
+      </div>
+      <div className="sub-list__title">{title}</div>
       <ul>
         {list
           ? list.subLists.map((sublist, index) => (

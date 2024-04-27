@@ -1,5 +1,5 @@
 import './Lists.scss';
-import shiba_1 from '../images/shiba_1.png';
+import shiba from '../images/shiba.png';
 
 const Lists = ({
   lists,
@@ -13,8 +13,7 @@ const Lists = ({
   return (
     <div className="list">
       <div className="list__header">
-        <img className="list__header-img" src={shiba_1} alt="shiba_1" />
-
+        <img className="list__header-img" src={shiba} alt="shiba" />
         <form className="list__header-form" onSubmit={handleListSubmit}>
           <input
             className="list__header-input"
