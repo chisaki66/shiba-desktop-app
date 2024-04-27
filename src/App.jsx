@@ -8,6 +8,7 @@ const App = () => {
   const [lists, setLists] = useState([]);
   const [listNum, setListNum] = useState(0);
   const [item, setItem] = useState('');
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const handleListSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +24,7 @@ const App = () => {
 
   const handleChangeList = (index) => {
     setListNum(index);
+    setShowSidebar(true);
   };
 
   const handleUpdateList = (index) => {
@@ -113,29 +115,32 @@ const App = () => {
   };
 
   return (
-    <div>
-      <header className="header"></header>
-      <Lists
-        lists={lists}
-        title={title}
-        handleListSubmit={handleListSubmit}
-        handleAddList={handleAddList}
-        handleChangeList={handleChangeList}
-        handleUpdateList={handleUpdateList}
-        handleRemoveList={handleRemoveList}
-      />
-      <SubLists
-        item={item}
-        list={lists[listNum]}
-        title={lists[listNum]?.title}
-        handleSubListSubmit={handleSubListSubmit}
-        handleAddSubList={handleAddSubList}
-        handleUpdateSubList={handleUpdateSubList}
-        handleEditSubList={handleEditSubList}
-        handleRemoveSubList={handleRemoveSubList}
-      />
-      <footer></footer>
-    </div>
+    <>
+      <header className="header" />
+      <main className="main">
+        <Lists
+          lists={lists}
+          title={title}
+          handleListSubmit={handleListSubmit}
+          handleAddList={handleAddList}
+          handleChangeList={handleChangeList}
+          handleUpdateList={handleUpdateList}
+          handleRemoveList={handleRemoveList}
+        />
+        {showSidebar ? (
+          <SubLists
+            item={item}
+            list={lists[listNum]}
+            title={lists[listNum]?.title}
+            handleSubListSubmit={handleSubListSubmit}
+            handleAddSubList={handleAddSubList}
+            handleUpdateSubList={handleUpdateSubList}
+            handleEditSubList={handleEditSubList}
+            handleRemoveSubList={handleRemoveSubList}
+          />
+        ) : null}
+      </main>
+    </>
   );
 };
 

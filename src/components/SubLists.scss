@@ -1,4 +1,9 @@
 .sub-list {
+  width: 550px;
+  background-color: #faf0f0;
+  box-shadow: 0 0 2px rgb(167, 167, 167);
+  transition: 2s;
+
   &__item {
     list-style: none;
     display: flex;
@@ -13,6 +18,7 @@
   &__unfinished-item {
     border: none;
     outline: none;
+    background-color: transparent;
   }
 
   &__action-button {

@@ -1,4 +1,28 @@
 .list {
+  width: 100%;
+  background-color: #fcf7f7;
+
+  &__header {
+    display: flex;
+    height: 100px;
+    padding: 10px 30px;
+  }
+
+  &__header-img {
+    width: 80px;
+  }
+
+  &__header-form {
+    width: 100%;
+    margin: auto;
+    padding-left: 30px;
+  }
+
+  &__header-input {
+    width: 300px;
+    height: 30px;
+  }
+
   &__item {
     list-style: none;
     display: flex;
