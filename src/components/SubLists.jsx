@@ -1,4 +1,5 @@
 import './SubLists.scss';
+import ListsNone from './ListsNone';
 import shiba_1 from '../images/shiba_1.png';
 
 const SubLists = ({
@@ -27,36 +28,40 @@ const SubLists = ({
       </div>
       {/* TODO: 編集できる仕様に変更する */}
       <div className="sub-list__title">{title}</div>
-      <ul>
-        {list
-          ? list.subLists.map((sublist, index) => (
-              <li className="sub-list__item" key={index}>
-                {/* TODO: デザインを変更する */}
-                <input
-                  type="checkbox"
-                  checked={sublist.isCompleted}
-                  onChange={() => handleUpdateSubList(index)}
-                />
-                {sublist.isCompleted ? (
-                  <span className="sub-list__done-item">{sublist.item}</span>
-                ) : (
+      {list.subLists.length !== 0 ? (
+        <ul>
+          {list
+            ? list.subLists.map((sublist, index) => (
+                <li className="sub-list__item" key={index}>
+                  {/* TODO: デザインを変更する */}
                   <input
-                    className="sub-list__unfinished-item"
-                    value={sublist.item}
-                    onChange={(event) => handleEditSubList(index, event.target.value)}
+                    type="checkbox"
+                    checked={sublist.isCompleted}
+                    onChange={() => handleUpdateSubList(index)}
                   />
-                )}
-                <div
-                  className="sub-list__action-button"
-                  onClick={() => handleRemoveSubList(index)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  ⋯
-                </div>
-              </li>
-            ))
-          : null}
-      </ul>
+                  {sublist.isCompleted ? (
+                    <span className="sub-list__done-item">{sublist.item}</span>
+                  ) : (
+                    <input
+                      className="sub-list__unfinished-item"
+                      value={sublist.item}
+                      onChange={(event) => handleEditSubList(index, event.target.value)}
+                    />
+                  )}
+                  <div
+                    className="sub-list__action-button"
+                    onClick={() => handleRemoveSubList(index)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    ⋯
+                  </div>
+                </li>
+              ))
+            : null}
+        </ul>
+      ) : (
+        <ListsNone width={140} />
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import './Lists.scss';
+import ListsNone from './ListsNone';
 import shiba from '../images/shiba.png';
 
 const Lists = ({
@@ -23,32 +24,36 @@ const Lists = ({
           />
         </form>
       </div>
-      <ul>
-        {lists.map((list, index) => (
-          <li className="list__item" key={index}>
-            {/* TODO: デザインを変更する */}
-            <input
-              className="list__checkbox"
-              type="checkbox"
-              checked={list.isCompleted}
-              onChange={() => handleUpdateList(index)}
-            />
-            <button
-              className={`list__button-item ${list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}`}
-              onClick={() => handleChangeList(index)}
-            >
-              {list.title}
-            </button>
-            <div
-              className="list__action-button"
-              onClick={() => handleRemoveList(index)}
-              style={{ cursor: 'pointer' }}
-            >
-              ⋯
-            </div>
-          </li>
-        ))}
-      </ul>
+      {lists.length !== 0 ? (
+        <ul>
+          {lists.map((list, index) => (
+            <li className="list__item" key={index}>
+              {/* TODO: デザインを変更する */}
+              <input
+                className="list__checkbox"
+                type="checkbox"
+                checked={list.isCompleted}
+                onChange={() => handleUpdateList(index)}
+              />
+              <button
+                className={`list__button-item ${list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}`}
+                onClick={() => handleChangeList(index)}
+              >
+                {list.title}
+              </button>
+              <div
+                className="list__action-button"
+                onClick={() => handleRemoveList(index)}
+                style={{ cursor: 'pointer' }}
+              >
+                ⋯
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ListsNone width={180} />
+      )}
     </div>
   );
 };
