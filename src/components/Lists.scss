@@ -15,18 +15,40 @@
   &__header-form {
     width: 100%;
     margin: auto;
-    padding-left: 30px;
+    padding-left: 20px;
   }
 
   &__header-input {
     max-width: 450px;
     width: 100%;
-    height: 25px;
+    height: 30px;
+    border: dotted 2px #d4aca8;
+    border-radius: 1.2em;
+    padding-left: 10px;
+    outline: none;
+  }
+
+  &__header-input::placeholder {
+    color: #d4aca8;
+    font-family: monospace;
+  }
+
+  &__header-input:focus {
+    color: #a0706b;
+    font-family: monospace;
   }
 
   &__item {
     list-style: none;
     display: flex;
+    margin-right: 30px;
+    padding: 14px 10px 8px 0;
+    border-bottom: dotted 2px #d4aca8;
+  }
+
+  &__button-item {
+    color: #a0706b;
+    font-family: monospace;
   }
 
   &__done-item {
@@ -38,5 +60,11 @@
   &__unfinished-item {
     border: none;
     background: transparent;
+  }
+
+  &__action-button {
+    color: #8d524d;
+    margin: 0 0 0 auto;
+    font-weight: bold;
   }
 }

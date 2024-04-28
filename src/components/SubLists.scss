@@ -1,12 +1,11 @@
 .sub-list {
-  width: 650px;
+  width: 500px;
   background-color: #faf0f0;
-  box-shadow: 0 0 4px rgb(167, 167, 167);
 
   &__header {
     display: flex;
     height: 100px;
-    padding: 10px 20px;
+    padding: 20px 20px 10px 20px;
   }
 
   &__header-img {
@@ -20,38 +19,68 @@
   }
 
   &__header-input {
-    width: 200px;
-    height: 20px;
+    width: 150px;
+    height: 25px;
+    border: dotted 2px #d4aca8;
+    border-radius: 1.2em;
+    padding-left: 10px;
+    outline: none;
+  }
+
+  &__header-input::placeholder {
+    color: #d4aca8;
+    font-family: monospace;
+  }
+
+  &__header-input:focus {
+    color: #a0706b;
+    font-family: monospace;
   }
 
   &__title {
     padding-left: 30px;
-    color: #8d524d;
+    color: #a0706b;
+    font-family: monospace;
   }
 
   &__title::before {
     content: url(../images/paws_icon.svg);
-    vertical-align: -4px;
+    vertical-align: -5.5px;
   }
 
   &__item {
     list-style: none;
     display: flex;
+    margin-right: 30px;
+    padding: 14px 10px 8px 0;
+    border-bottom: dotted 2px #d4aca8;
   }
 
   &__done-item {
     border: none;
     background: transparent;
     text-decoration: line-through;
+    color: #a0706b;
+    font-family: monospace;
+    padding: 4px 0 0 2px;
   }
 
   &__unfinished-item {
     border: none;
     outline: none;
     background-color: transparent;
+    color: #a0706b;
+    font-family: monospace;
+  }
+
+  &__unfinished-item:focus {
+    color: #a0706b;
+    font-family: monospace;
   }
 
   &__action-button {
-    margin-left: 6px;
+    color: #8d524d;
+    margin: 0 0 0 auto;
+    font-weight: bold;
   }
 }

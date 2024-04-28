@@ -26,13 +26,15 @@ const Lists = ({
       <ul>
         {lists.map((list, index) => (
           <li className="list__item" key={index}>
+            {/* TODO: デザインを変更する */}
             <input
+              className="list__checkbox"
               type="checkbox"
               checked={list.isCompleted}
               onChange={() => handleUpdateList(index)}
             />
             <button
-              className={list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}
+              className={`list__button-item ${list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}`}
               onClick={() => handleChangeList(index)}
             >
               {list.title}
@@ -42,7 +44,7 @@ const Lists = ({
               onClick={() => handleRemoveList(index)}
               style={{ cursor: 'pointer' }}
             >
-              X
+              ⋯
             </div>
           </li>
         ))}

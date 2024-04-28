@@ -14,21 +14,24 @@ const SubLists = ({
   return (
     <div className="sub-list">
       <div className="sub-list__header">
+        {/* TODO: random で異なる image が表示されるようにする */}
         <img className="sub-list__header-img" src={shiba_1} alt="shiba_1" />
         <form className="sub-list__header-form" onSubmit={handleSubListSubmit}>
           <input
             className="sub-list__header-input"
-            placeholder="タスクを入力..."
+            placeholder="リストを入力..."
             value={item}
             onChange={handleAddSubList}
           />
         </form>
       </div>
+      {/* TODO: 編集できる仕様に変更する */}
       <div className="sub-list__title">{title}</div>
       <ul>
         {list
           ? list.subLists.map((sublist, index) => (
               <li className="sub-list__item" key={index}>
+                {/* TODO: デザインを変更する */}
                 <input
                   type="checkbox"
                   checked={sublist.isCompleted}
@@ -48,7 +51,7 @@ const SubLists = ({
                   onClick={() => handleRemoveSubList(index)}
                   style={{ cursor: 'pointer' }}
                 >
-                  X
+                  ⋯
                 </div>
               </li>
             ))

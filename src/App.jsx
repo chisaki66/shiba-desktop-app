@@ -38,6 +38,7 @@ const App = () => {
   };
 
   const handleRemoveList = (index) => {
+    // TODO: dialog で確認できるようにする
     const newLists = [...lists];
     newLists.splice(index, 1);
     setLists(newLists);
@@ -99,6 +100,7 @@ const App = () => {
   };
 
   const handleRemoveSubList = (index) => {
+    // TODO: dialog で確認できるようにする
     const newSubLists = [...lists[listNum].subLists];
     newSubLists.splice(index, 1);
     setLists(
