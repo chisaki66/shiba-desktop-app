@@ -2,7 +2,7 @@ import './Lists.scss';
 import ListsNone from './ListsNone';
 import shiba from '../images/shiba.png';
 
-const Lists = ({ lists, title, setLists, setTitle, setListNum, setShowSidebar }) => {
+const Lists = ({ lists, title, setLists, setTitle, setListNum, setShowSubLists }) => {
   const handleListSubmit = (event) => {
     event.preventDefault();
     if (title === '') return;
@@ -15,9 +15,9 @@ const Lists = ({ lists, title, setLists, setTitle, setListNum, setShowSidebar })
     setTitle(event.target.value);
   };
 
-  const handleChangeList = (index) => {
+  const handleSelectList = (index) => {
     setListNum(index);
-    setShowSidebar(true);
+    setShowSubLists(true);
   };
 
   const handleUpdateList = (index) => {
@@ -63,7 +63,7 @@ const Lists = ({ lists, title, setLists, setTitle, setListNum, setShowSidebar })
               />
               <button
                 className={`list__button-item ${list.isCompleted ? 'list__done-item' : 'list__unfinished-item'}`}
-                onClick={() => handleChangeList(index)}
+                onClick={() => handleSelectList(index)}
               >
                 {list.title}
               </button>

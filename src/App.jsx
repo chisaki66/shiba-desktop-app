@@ -7,7 +7,7 @@ const App = () => {
   const [title, setTitle] = useState('');
   const [lists, setLists] = useState([]);
   const [listNum, setListNum] = useState(0);
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSubLists, setShowSubLists] = useState(false);
 
   return (
     <>
@@ -19,9 +19,9 @@ const App = () => {
           setLists={setLists}
           setTitle={setTitle}
           setListNum={setListNum}
-          setShowSidebar={setShowSidebar}
+          setShowSubLists={setShowSubLists}
         />
-        {showSidebar ? (
+        {showSubLists ? (
           <SubLists
             lists={lists}
             listNum={listNum}
