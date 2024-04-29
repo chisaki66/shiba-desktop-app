@@ -2,15 +2,41 @@ import './Lists.scss';
 import ListsNone from './ListsNone';
 import shiba from '../images/shiba.png';
 
-const Lists = ({
-  lists,
-  handleListSubmit,
-  title,
-  handleAddList,
-  handleChangeList,
-  handleUpdateList,
-  handleRemoveList,
-}) => {
+const Lists = ({ lists, title, setLists, setTitle, setListNum, setShowSidebar }) => {
+  const handleListSubmit = (event) => {
+    event.preventDefault();
+    if (title === '') return;
+    setLists((lists) => [...lists, { title, isCompleted: false, subLists: [] }]);
+    setTitle('');
+    setListNum(lists.length);
+  };
+
+  const handleAddList = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleChangeList = (index) => {
+    setListNum(index);
+    setShowSidebar(true);
+  };
+
+  const handleUpdateList = (index) => {
+    const newLists = lists.map((list, listIndex) => {
+      if (listIndex === index) {
+        list.isCompleted = !list.isCompleted;
+      }
+      return list;
+    });
+    setLists(newLists);
+  };
+
+  const handleRemoveList = (index) => {
+    // TODO: dialog で確認できるようにする
+    const newLists = [...lists];
+    newLists.splice(index, 1);
+    setLists(newLists);
+  };
+
   return (
     <div className="list">
       <div className="list__header">

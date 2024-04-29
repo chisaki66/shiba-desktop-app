@@ -1,17 +1,83 @@
 import './SubLists.scss';
+import { useState } from 'react';
 import ListsNone from './ListsNone';
 import shiba_1 from '../images/shiba_1.png';
 
-const SubLists = ({
-  item,
-  list,
-  title,
-  handleSubListSubmit,
-  handleAddSubList,
-  handleUpdateSubList,
-  handleEditSubList,
-  handleRemoveSubList,
-}) => {
+const SubLists = ({ lists, list, listNum, title, setLists }) => {
+  const [item, setItem] = useState('');
+
+  const handleSubListSubmit = (event) => {
+    event.preventDefault();
+    if (item === '') return;
+    const newSubLists = [...lists[listNum].subLists, { item, isCompleted: false }];
+    setLists((lists) => {
+      lists[listNum].subLists = newSubLists;
+      return lists;
+    });
+    setItem('');
+  };
+
+  const handleAddSubList = (event) => {
+    setItem(event.target.value);
+  };
+
+  const handleUpdateSubList = (index) => {
+    const newSubLists = lists[listNum].subLists.map((subList, listIndex) => {
+      if (listIndex === index) {
+        subList.isCompleted = !subList.isCompleted;
+      }
+      return subList;
+    });
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
+          : list,
+      ),
+    );
+  };
+
+  const handleEditSubList = (index, newItem) => {
+    const newSubLists = lists[listNum].subLists.map((subList, listIndex) => {
+      if (listIndex === index) {
+        subList.item = newItem;
+      }
+      return subList;
+    });
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
+          : list,
+      ),
+    );
+  };
+
+  const handleRemoveSubList = (index) => {
+    // TODO: dialog で確認できるようにする
+    const newSubLists = [...lists[listNum].subLists];
+    newSubLists.splice(index, 1);
+    setLists(
+      lists.map((list, index) =>
+        index === listNum
+          ? {
+              title: lists[listNum].title,
+              isCompleted: lists[listNum].isCompleted,
+              subLists: newSubLists,
+            }
+          : list,
+      ),
+    );
+  };
+
   return (
     <div className="sub-list">
       <div className="sub-list__header">
